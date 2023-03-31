@@ -23,7 +23,7 @@ namespace MakeAlbumn
                     var swtch = arg.Substring(1);
                     var index = swtch.IndexOf(':');
                     if (index == -1)
-                        _switches[swtch] = String.Empty;
+                        _switches[swtch] = string.Empty;
                     else
                     {
                         _switches[swtch.Substring(0, index)]
@@ -35,7 +35,7 @@ namespace MakeAlbumn
 
         public string Parameter(int index)
         {
-            return index >= _parameters.Count ? String.Empty : _parameters[index];
+            return index >= _parameters.Count ? string.Empty : _parameters[index];
         }
 
         public int ParameterCount
@@ -62,8 +62,7 @@ namespace MakeAlbumn
         public int IntSwitch(string switchName, int defaultValue, Func<int, bool> validator = null)
         {
             var swValue = Switch(switchName);
-            int result;
-            if (Int32.TryParse(swValue, out result))
+            if (int.TryParse(swValue, out int result))
             {
                 if (validator != null && !validator(result))
                     return defaultValue;
